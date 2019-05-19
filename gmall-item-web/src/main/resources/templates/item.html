@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello Thymeleaf</h1>
+    <!--常用的thymeleaf的标签-->
+    <!--取值-->
+    <div th:text="${hello}">默认内容</div>
+    <!--循环-->
+    <div th:each="user:${userInfos}" th:text="${user.name}">用户信息</div>
+    <!--判断-->
+    <div th:if="${hello == 'hello thymeleaf'}">默认内容</div>
+    <!--使用三目运算符判断-->
+    <div th:text="(${hello == 'hello'})?'yes':'no'">默认内容</div>
+    <!--引入-->
+    <div th:include="text::inner"></div>
+    <!--js函数调用-->
+
+    <div>输出skuInfo的属性</div>
+    <div th:text="${skuInfo?.id}">Id</div>
+    <div th:text="${skuInfo?.spuId}">Id</div>
+    <div th:text="${skuInfo?.price}">Id</div>
+    <div th:text="${skuInfo?.skuName}">Id</div>
+    <div th:text="${skuInfo?.skuDesc}">Id</div>
+    <div th:text="${skuInfo?.weight}">Id</div>
+    <div th:text="${skuInfo?.catalog3Id}">Id</div>
+    <div>输出图片</div>
+    <div th:each="skuImageUrl:${skuInfo?.skuImageList}" th:text="${skuImageUrl.imgUrl}"><img th:src="${skuImageUrl.imgUrl}"/> </div>
+</body>
+</html>
